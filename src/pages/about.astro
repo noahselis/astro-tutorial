@@ -1,18 +1,51 @@
 ---
+const pageTitle = "About Me";
+
+const identity = {
+	name: "Noah",
+	country: "USA",
+	age: 28,
+	hobbies: ["birdwatching", "hiking", "reading"],
+};
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
 		<a href="/">Home</a>
-		<a href="/about">About</a>
-		<a href="/blog">Blog</a>
-		<h1>Hello from about!</h1>
+		<a href="/about/">About</a>
+		<a href="/blog/">Blog</a>
+		<h1>About Me</h1>
+		<h2>
+			My name is {identity.name}, I'm {identity.age} years old and this is
+			my new Astro site!
+		</h2>
+
+		<p>
+			I am working through Astro's introductory tutorial. This is the
+			second page on my website, and it's the first one I built myself!
+		</p>
+
+		<p>
+			This site will update as I complete more of the tutorial, so keep
+			checking back and see how my journey is going!
+		</p>
+
+		<h2>My Hobbies</h2>
+		<ul>
+			{identity.hobbies.map((hobby) => <li>{hobby}</li>)}
+		</ul>
+
+		{happy && <p>i'm happy</p>}
+		{finished && <p>i finished this turorial</p>}
+		{goal === 3 ? <p>goal is 3</p> : <p> the goal is not three</p>}
 	</body>
 </html>
