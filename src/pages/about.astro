@@ -1,4 +1,8 @@
 ---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
 const pageTitle = "About Me";
 
 const identity = {
@@ -11,6 +15,8 @@ const identity = {
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
 ---
 
 <html lang="en">
@@ -18,11 +24,22 @@ const goal = 3;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>{pageTitle}</title>
+		<style define:vars={{ skillColor }}>
+			h1 {
+				color: purple;
+				font-size: 4rem;
+			}
+			.hobby {
+				color: green;
+				font-weight: bold;
+			}
+			p {
+				color: var(--skillColor);
+			}
+		</style>
 	</head>
 	<body>
-		<a href="/">Home</a>
-		<a href="/about/">About</a>
-		<a href="/blog/">Blog</a>
+		<Header />
 		<h1>About Me</h1>
 		<h2>
 			My name is {identity.name}, I'm {identity.age} years old and this is
@@ -41,11 +58,14 @@ const goal = 3;
 
 		<h2>My Hobbies</h2>
 		<ul>
-			{identity.hobbies.map((hobby) => <li>{hobby}</li>)}
+			{identity.hobbies.map((hobby) => <li class="hobby">{hobby}</li>)}
 		</ul>
-
 		{happy && <p>i'm happy</p>}
 		{finished && <p>i finished this turorial</p>}
 		{goal === 3 ? <p>goal is 3</p> : <p> the goal is not three</p>}
+		<Footer />
+		<script>
+			import '../scripts/menu'
+		</script>
 	</body>
 </html>
